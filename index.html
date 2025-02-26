@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charlie Dunsford</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap');
+    
+    :root {
+      --primary-color: #e5dccf; /* Beige */
+      --highlight-color: #43877d; /* Teal */
+      --light-beige: #f5f0e6;
+      --dark-beige: #c9bfb2;
+      /* Update background and text colors for the new look */
+      --bg-color: #dbd2c5; /* Dimmer beige background */
+      --text-color: #1c2423; /* Dark text for readability */
+      --accent-color: #779395;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Quicksand', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      margin-bottom: 40px;
+      border: 1px solid var(--highlight-color); /* Teal border */
+      background-color: rgba(229, 220, 207, 0.1);
+      box-shadow: 0 0 25px rgba(229, 220, 207, 0.2);
+      border-radius: 5px;
+    }
+    
+    h1 {
+      font-size: 3em;
+      margin-bottom: 8px;
+      color: var(--highlight-color); /* Teal */
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    
+    .email {
+      font-size: 1.1em;
+      margin: 5px 0;
+      color: var(--highlight-color); /* Teal */
+      font-weight: 300;
+    }
+    
+    .subtitle {
+      font-size: 1.1em;
+      color: var(--highlight-color); /* Teal */
+      margin-top: 5px;
+      font-weight: 300;
+    }
+    
+    section {
+      background-color: rgba(229, 220, 207, 0.08);
+      border: 1px solid var(--highlight-color); /* Teal border */
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 5px;
+      position: relative;
+    }
+    
+    section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, 
+        transparent 65%,
+        rgba(67, 135, 125, 0.05) 100%);
+      pointer-events: none;
+      border-radius: 5px;
+    }
+    
+    .profile-content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    /* Updated profile-item with hover effect */
+    .profile-item {
+      padding: 15px;
+      border-radius: 8px;
+      background-color: rgba(229, 220, 207, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .profile-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-title {
+      color: var(--highlight-color);
+      font-weight: 500;
+      font-size: 1.3em;
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .profile-content-text {
+      color: var(--highlight-color); /* Teal text */
+      font-size: 1.1em;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+    
+    .placeholder {
+      color: var(--highlight-color);
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--highlight-color); /* Teal text */
+      font-size: 0.9em;
+      padding: 15px;
+      border-top: 2px solid var(--highlight-color); /* Teal border */
+    }
+    
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2em;
+      }
+      
+      .email, .subtitle {
+        font-size: 1em;
+      }
+      
+      .profile-title {
+        font-size: 1.2em;
+      }
+      
+      .profile-content-text {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Charlie Dunsford</h1>
+      <div class="email">charliedunsford@icloud.com</div>
+      <div class="subtitle">Computer Science Student at UNBC</div>
+    </header>
+    
+    <section>
+      <div class="profile-content">
+        <div class="profile-item">
+          <span class="profile-title">About Me</span>
+          <span class="profile-content-text placeholder">Coming soon...</span>
+        </div>
+        
+        <div class="profile-item">
+          <span class="profile-title">Projects</span>
+          <span class="profile-content-text placeholder">Coming soon...</span>
+        </div>
+        
+        <div class="profile-item">
+          <span class="profile-title">Skills</span>
+          <span class="profile-content-text placeholder">Coming soon...</span>
+        </div>
+        
+        <div class="profile-item">
+          <span class="profile-title">Learning</span>
+          <span class="profile-content-text">Java</span>
+        </div>
+        
+        <div class="profile-item">
+          <span class="profile-title">Interests & Hobbies</span>
+          <span class="profile-content-text">
+            Making video games • Flying drones • Producing music • Skiing • Tinkering with old electronics
+          </span>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      &copy; 2025 Charlie Dunsford
+    </footer>
+  </div>
+</body>
+</html>
