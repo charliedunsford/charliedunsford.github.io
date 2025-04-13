@@ -31,7 +31,7 @@
             background-color: var(--primary);
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 80px 20px;
             position: relative;
         }
         
@@ -105,7 +105,7 @@
             max-width: 500px;
         }
         
-        /* Navigation */
+        /* Navigation - Desktop*/
         nav {
             background-color: var(--primary);
             position: sticky;
@@ -132,6 +132,28 @@
         
         nav a:hover {
             background-color: var(--secondary);
+        }
+		
+		/* Navigation - Mobile */
+        /* IMPROVED MOBILE MENU */
+        .nav-container {
+            position: relative;
+        }
+        
+		.menu-toggle {
+            display: none;
+            cursor: pointer;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+            width: 100%;
         }
         
         /* Skills section */
@@ -359,10 +381,57 @@
             margin: 30px 0;
         }
         
-        /* Responsive adjustments */
+        /* Responsive adjustments - FIXED FOR IPHONE */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            
+            nav {
+                position: relative;
+                width: 100%;
+                height: auto;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                background-color: var(--primary);
+            }
+            
+            nav.open {
+                max-height: 300px;
+            }
+        
             nav ul {
                 flex-direction: column;
+                width: 100%;
+            }
+            
+            nav li {
+                width: 100%;
+                border-bottom: 1px solid var(--secondary);
+            }
+            
+            nav li:last-child {
+                border-bottom: none;
+            }
+            
+            nav a {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+            
+            /* Add padding to top of main content to prevent overlap with fixed menu */
+            main.container {
+                padding-top: 60px;
             }
             
             header {
@@ -386,15 +455,19 @@
         <p>UNBC Computer Science</p>
     </header>
     
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#learning">Learning</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="nav-container">
+        <div class="menu-toggle" id="menuToggle">Menu</div>
+       
+        <nav id="mainNav">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#learning">Learning</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
     
     <main class="container">
         <section id="about">
@@ -497,8 +570,6 @@
                         </div>
                     </div>
                 </div>
-             
-			
             </div>
             <div class="vintage-divider"></div>
         </section>
@@ -508,13 +579,13 @@
             <div class="contact-options">
                 <div class="contact-option">
                     <h3>Send a Message</h3>
-						<form action="https://formsubmit.co/charliedunsford.dev@icloud.com" method="POST">
-							<input type="text" name="name" placeholder="Your Name" required>
-							<input type="email" name="email" placeholder="Your Email" required>
-							<input type="text" name="subject" placeholder="Subject">
-							<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-							<button type="submit">Send Message</button>
-						</form>
+                    <form action="https://formsubmit.co/charliedunsford.dev@icloud.com" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="text" name="subject" placeholder="Subject">
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
                 </div>
                 
                 <div class="contact-option">
@@ -526,8 +597,8 @@
                     
                     <h3>Social Media</h3>
                     <div class="social-links">
-						<a href="https://www.linkedin.com/in/charliedunsford" target="_blank">LinkedIn</a>
-						<a href="https://github.com/charliedunsford" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/charliedunsford" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/charliedunsford" target="_blank">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -537,5 +608,44 @@
     <footer>
         <p>&copy; 2025 Charlie Dunsford</p>
     </footer>
+    
+    <script>
+        // Fixed menu toggle functionality
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('open');
+        });
+        
+        // Close menu when a link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('mainNav').classList.remove('open');
+                    
+                    // Smooth scroll to section with offset for fixed header
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        event.preventDefault();
+                        const menuHeight = document.querySelector('.nav-container').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        
+                        window.scrollTo({
+                            top: targetPosition - menuHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Ensure menu is properly reset on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('mainNav').classList.remove('open');
+            }
+        });
+    </script>
 </body>
 </html>
