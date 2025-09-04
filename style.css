@@ -11,15 +11,27 @@ body {
 	font-weight: 300px;
 	color: white;
 	line-height: 1.5;
+	background-color: #697268;
 }
 
-.profile-container {
+.container {
+	box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.6);
 	background-color: #04151F;
 	display: flex;
+	padding: 40px;
+	margin: 20px;
+	border-radius: 25px;
+}
+
+.profile {
 	justify-content: space-between;
 	align-items: center;
 	gap: 100px;
 	padding: 100px;
+}
+
+.gold {
+	color: #EFD6AC;
 }
 
 .red {
@@ -36,11 +48,12 @@ body {
 	line-height: 3;
 }
 
-.social-list {
+ul {
 	display: flex;
 	list-style: none;
 	margin-top: 20px;
 	gap: 1rem;
+	flex: 1;
 }
 
 svg {
@@ -53,7 +66,7 @@ svg:hover {
 }
 
 .profile-photo {
-	border: 5px solid white;
+	border: 10px solid white;
 	border-radius: 50%;
 	overflow: hidden;
 	width: 30rem;
@@ -61,10 +74,17 @@ svg:hover {
 	flex: none;
 }
 
-.skills-container {
-	background-color: #697268;
-	display: flex;
-	justify-content: center;
-	height: 1000px;
-	padding: 2rem;
+.projects,
+.skills {
+	height: 20rem;
+}
+
+.footer {
+	align-items: center;
+	flex-direction: column;
+	padding: 10px;
+}	
+
+.copy {
+	font-size: 1rem;
 }
